@@ -1,0 +1,8 @@
+.aside {
+  display: block;
+  width: 320px;
+  height: 720px;
+
+  margin-left: 4px;
+  border: 1px solid black;
+}
