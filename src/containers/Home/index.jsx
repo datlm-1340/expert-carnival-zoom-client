@@ -29,6 +29,11 @@ const Home = () => {
         <Link to="/zoom/create_meeting" className="primary-button">
           Create Meeting
         </Link>
+        <AdminBox>
+          <Link to="/zoom/create_meeting" className="primary-button">
+            Create Meeting
+          </Link>
+        </AdminBox>
         <Link to="/zoom/meetings" className="primary-button">
           Meetings
         </Link>
