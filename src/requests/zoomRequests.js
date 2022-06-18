@@ -11,3 +11,7 @@ export const checkOauthAuthorize = () => {
 export const createMeeting = (params) => {
   return request("POST", "/api/zoom/meetings", params);
 };
+
+export const getParticipants = (params) => {
+  return request("GET", "/api/zoom/participants");
+};

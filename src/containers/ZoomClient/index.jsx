@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ZoomMtg } from '@zoomus/websdk'
 import { getMeeting } from 'requests/userRequests'
-import consumer from 'consumer'
 import '../../App.css'
 
 ZoomMtg.setZoomJSLib('https://source.zoom.us/2.4.0/lib', '/av')
@@ -17,7 +16,6 @@ const ZoomClient = () => {
   let leaveUrl = '/zoom/thanks'
   let tk = ''
 
-  let channel
   let meeting
 
   useEffect(() => {
@@ -25,21 +23,6 @@ const ZoomClient = () => {
       meeting = res.data
       startMeeting(meeting)
     })
-
-    channel = consumer.subscriptions.create(
-      {
-        channel: 'ZoomChannel',
-        room: `rain-${params.id}`,
-      },
-      {
-        disconnected() {
-          this.send({
-            type: 'left',
-            user_id: meeting.user_id,
-          })
-        },
-      },
-    )
   }, [])
 
   const startMeeting = (meeting) => {
@@ -60,11 +43,6 @@ const ZoomClient = () => {
           tk,
           success: (success) => {
             console.log('success', success)
-
-            channel.send({
-              type: 'joined',
-              user_id: meeting.user_id,
-            })
           },
           error: (error) => {
             console.log(error)
