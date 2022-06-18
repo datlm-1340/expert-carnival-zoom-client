@@ -1,4 +1,3 @@
-import { zoomAuthCode } from 'requests/userRequests'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { getUser, setUser } from 'token'
